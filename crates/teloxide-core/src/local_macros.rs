@@ -355,15 +355,15 @@ macro_rules! impl_payload {
     };
     (@[multipart = $($multipart_attr:ident),*] $Method:ident req { $($reqf:ident),* } opt { $($optf:ident),*} ) => {
         impl crate::requests::MultipartPayload for $Method {
-            fn copy_files(&self, into: &mut dyn FnMut(crate::types::InputFile)) {
+            fn copy_files(&self, into: &mut dyn FnMut(crate::media_types::InputFile)) {
                 $(
-                    crate::types::InputFileLike::copy_into(&self.$multipart_attr, into);
+                    crate::media_types::InputFileLike::copy_into(&self.$multipart_attr, into);
                 )*
             }
 
-            fn move_files(&mut self, into: &mut dyn FnMut(crate::types::InputFile)) {
+            fn move_files(&mut self, into: &mut dyn FnMut(crate::media_types::InputFile)) {
                 $(
-                    crate::types::InputFileLike::move_into(&mut self.$multipart_attr, into);
+                    crate::media_types::InputFileLike::move_into(&mut self.$multipart_attr, into);
                 )*
             }
         }
@@ -499,7 +499,7 @@ macro_rules! requester_forward {
     (@method send_photo $body:ident $ty:ident) => {
         type SendPhoto = $ty![SendPhoto];
 
-        fn send_photo<C>(&self, chat_id: C, photo: InputFile) -> Self::SendPhoto where C: Into<Recipient> {
+        fn send_photo<C>(&self, chat_id: C, photo: crate::media_types::InputFile) -> Self::SendPhoto where C: Into<Recipient> {
             let this = self;
             $body!(send_photo this (chat_id: C, photo: InputFile))
         }
@@ -507,7 +507,7 @@ macro_rules! requester_forward {
     (@method send_audio $body:ident $ty:ident) => {
         type SendAudio = $ty![SendAudio];
 
-        fn send_audio<C>(&self, chat_id: C, audio: InputFile) -> Self::SendAudio where C: Into<Recipient> {
+        fn send_audio<C>(&self, chat_id: C, audio: crate::media_types::InputFile) -> Self::SendAudio where C: Into<Recipient> {
             let this = self;
             $body!(send_audio this (chat_id: C, audio: InputFile))
         }
@@ -515,7 +515,7 @@ macro_rules! requester_forward {
     (@method send_document $body:ident $ty:ident) => {
         type SendDocument = $ty![SendDocument];
 
-        fn send_document<C>(&self, chat_id: C, document: InputFile) -> Self::SendDocument where C: Into<Recipient> {
+        fn send_document<C>(&self, chat_id: C, document: crate::media_types::InputFile) -> Self::SendDocument where C: Into<Recipient> {
             let this = self;
             $body!(send_document this (chat_id: C, document: InputFile))
         }
@@ -523,7 +523,7 @@ macro_rules! requester_forward {
     (@method send_video $body:ident $ty:ident) => {
         type SendVideo = $ty![SendVideo];
 
-        fn send_video<C>(&self, chat_id: C, video: InputFile) -> Self::SendVideo where C: Into<Recipient> {
+        fn send_video<C>(&self, chat_id: C, video: crate::media_types::InputFile) -> Self::SendVideo where C: Into<Recipient> {
             let this = self;
             $body!(send_video this (chat_id: C, video: InputFile))
         }
@@ -531,7 +531,7 @@ macro_rules! requester_forward {
     (@method send_animation $body:ident $ty:ident) => {
         type SendAnimation = $ty![SendAnimation];
 
-        fn send_animation<C>(&self, chat_id: C, animation: InputFile) -> Self::SendAnimation where C: Into<Recipient> {
+        fn send_animation<C>(&self, chat_id: C, animation: crate::media_types::InputFile) -> Self::SendAnimation where C: Into<Recipient> {
             let this = self;
             $body!(send_animation this (chat_id: C, animation: InputFile))
         }
@@ -539,7 +539,7 @@ macro_rules! requester_forward {
     (@method send_voice $body:ident $ty:ident) => {
         type SendVoice = $ty![SendVoice];
 
-        fn send_voice<C>(&self, chat_id: C, voice: InputFile) -> Self::SendVoice where C: Into<Recipient> {
+        fn send_voice<C>(&self, chat_id: C, voice: crate::media_types::InputFile) -> Self::SendVoice where C: Into<Recipient> {
             let this = self;
             $body!(send_voice this (chat_id: C, voice: InputFile))
         }
@@ -547,7 +547,7 @@ macro_rules! requester_forward {
     (@method send_video_note $body:ident $ty:ident) => {
         type SendVideoNote = $ty![SendVideoNote];
 
-        fn send_video_note<C>(&self, chat_id: C, video_note: InputFile) -> Self::SendVideoNote where C: Into<Recipient> {
+        fn send_video_note<C>(&self, chat_id: C, video_note: crate::media_types::InputFile) -> Self::SendVideoNote where C: Into<Recipient> {
             let this = self;
             $body!(send_video_note this (chat_id: C, video_note: InputFile))
         }
@@ -556,7 +556,7 @@ macro_rules! requester_forward {
         type SendMediaGroup = $ty![SendMediaGroup];
 
         fn send_media_group<C, M>(&self, chat_id: C, media: M) -> Self::SendMediaGroup where C: Into<Recipient>,
-        M: IntoIterator<Item = InputMedia> {
+        M: IntoIterator<Item = crate::media_types::InputMedia> {
             let this = self;
             $body!(send_media_group this (chat_id: C, media: M))
         }
@@ -791,7 +791,7 @@ macro_rules! requester_forward {
     (@method set_chat_photo $body:ident $ty:ident) => {
         type SetChatPhoto = $ty![SetChatPhoto];
 
-        fn set_chat_photo<C>(&self, chat_id: C, photo: InputFile) -> Self::SetChatPhoto where C: Into<Recipient> {
+        fn set_chat_photo<C>(&self, chat_id: C, photo: crate::media_types::InputFile) -> Self::SetChatPhoto where C: Into<Recipient> {
             let this = self;
             $body!(set_chat_photo this (chat_id: C, photo: InputFile))
         }
@@ -1127,7 +1127,7 @@ macro_rules! requester_forward {
     (@method edit_message_media $body:ident $ty:ident) => {
         type EditMessageMedia = $ty![EditMessageMedia];
 
-        fn edit_message_media<C>(&self, chat_id: C, message_id: MessageId, media: InputMedia) -> Self::EditMessageMedia where C: Into<Recipient> {
+        fn edit_message_media<C>(&self, chat_id: C, message_id: MessageId, media: crate::media_types::InputMedia) -> Self::EditMessageMedia where C: Into<Recipient> {
             let this = self;
             $body!(edit_message_media this (chat_id: C, message_id: MessageId, media: InputMedia))
         }
@@ -1135,7 +1135,7 @@ macro_rules! requester_forward {
     (@method edit_message_media_inline $body:ident $ty:ident) => {
         type EditMessageMediaInline = $ty![EditMessageMediaInline];
 
-        fn edit_message_media_inline<I>(&self, inline_message_id: I, media: InputMedia) -> Self::EditMessageMediaInline where I: Into<String> {
+        fn edit_message_media_inline<I>(&self, inline_message_id: I, media: crate::media_types::InputMedia) -> Self::EditMessageMediaInline where I: Into<String> {
             let this = self;
             $body!(edit_message_media_inline this (inline_message_id: I, media: InputMedia))
         }
@@ -1175,7 +1175,7 @@ macro_rules! requester_forward {
     (@method send_sticker $body:ident $ty:ident) => {
         type SendSticker = $ty![SendSticker];
 
-        fn send_sticker<C>(&self, chat_id: C, sticker: InputFile) -> Self::SendSticker where C: Into<Recipient> {
+        fn send_sticker<C>(&self, chat_id: C, sticker: crate::media_types::InputFile) -> Self::SendSticker where C: Into<Recipient> {
             let this = self;
             $body!(send_sticker this (chat_id: C, sticker: InputFile))
         }
@@ -1199,7 +1199,7 @@ macro_rules! requester_forward {
     (@method upload_sticker_file $body:ident $ty:ident) => {
         type UploadStickerFile = $ty![UploadStickerFile];
 
-        fn upload_sticker_file(&self, user_id: UserId, png_sticker: InputFile) -> Self::UploadStickerFile {
+        fn upload_sticker_file(&self, user_id: UserId, png_sticker: crate::media_types::InputFile) -> Self::UploadStickerFile {
             let this = self;
             $body!(upload_sticker_file this (user_id: UserId, png_sticker: InputFile))
         }
@@ -1207,7 +1207,7 @@ macro_rules! requester_forward {
     (@method create_new_sticker_set $body:ident $ty:ident) => {
         type CreateNewStickerSet = $ty![CreateNewStickerSet];
 
-        fn create_new_sticker_set<N, T, E>(&self, user_id: UserId, name: N, title: T, sticker: InputSticker, emojis: E) -> Self::CreateNewStickerSet where N: Into<String>,
+        fn create_new_sticker_set<N, T, E>(&self, user_id: UserId, name: N, title: T, sticker: crate::media_types::InputSticker, emojis: E) -> Self::CreateNewStickerSet where N: Into<String>,
         T: Into<String>,
         E: Into<String> {
             let this = self;
@@ -1217,7 +1217,7 @@ macro_rules! requester_forward {
     (@method add_sticker_to_set $body:ident $ty:ident) => {
         type AddStickerToSet = $ty![AddStickerToSet];
 
-        fn add_sticker_to_set<N, E>(&self, user_id: UserId, name: N, sticker: InputSticker, emojis: E) -> Self::AddStickerToSet where N: Into<String>,
+        fn add_sticker_to_set<N, E>(&self, user_id: UserId, name: N, sticker: crate::media_types::InputSticker, emojis: E) -> Self::AddStickerToSet where N: Into<String>,
         E: Into<String> {
             let this = self;
             $body!(add_sticker_to_set this (user_id: UserId, name: N, sticker: InputSticker, emojis: E))

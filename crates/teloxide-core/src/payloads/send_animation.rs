@@ -18,7 +18,7 @@ impl_payload! {
             pub chat_id: Recipient [into],
             /// Animation to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub animation: InputFile,
         }
         optional {
@@ -32,7 +32,7 @@ impl_payload! {
             pub height: u32,
             /// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub thumb: InputFile,
             /// Animation caption (may also be used when resending videos by _file\_id_), 0-1024 characters after entities parsing
             pub caption: String [into],

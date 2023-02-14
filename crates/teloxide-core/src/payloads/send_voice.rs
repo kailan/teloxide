@@ -20,7 +20,7 @@ impl_payload! {
             pub chat_id: Recipient [into],
             /// Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub voice: InputFile,
         }
         optional {

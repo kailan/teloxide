@@ -223,49 +223,49 @@ pub trait Requester {
     type SendPhoto: Request<Payload = SendPhoto, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendPhoto`].
-    fn send_photo<C>(&self, chat_id: C, photo: InputFile) -> Self::SendPhoto
+    fn send_photo<C>(&self, chat_id: C, photo: crate::media_types::InputFile) -> Self::SendPhoto
     where
         C: Into<Recipient>;
 
     type SendAudio: Request<Payload = SendAudio, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendAudio`].
-    fn send_audio<C>(&self, chat_id: C, audio: InputFile) -> Self::SendAudio
+    fn send_audio<C>(&self, chat_id: C, audio: crate::media_types::InputFile) -> Self::SendAudio
     where
         C: Into<Recipient>;
 
     type SendDocument: Request<Payload = SendDocument, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendDocument`].
-    fn send_document<C>(&self, chat_id: C, document: InputFile) -> Self::SendDocument
+    fn send_document<C>(&self, chat_id: C, document: crate::media_types::InputFile) -> Self::SendDocument
     where
         C: Into<Recipient>;
 
     type SendVideo: Request<Payload = SendVideo, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendVideo`].
-    fn send_video<C>(&self, chat_id: C, video: InputFile) -> Self::SendVideo
+    fn send_video<C>(&self, chat_id: C, video: crate::media_types::InputFile) -> Self::SendVideo
     where
         C: Into<Recipient>;
 
     type SendAnimation: Request<Payload = SendAnimation, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendAnimation`].
-    fn send_animation<C>(&self, chat_id: C, animation: InputFile) -> Self::SendAnimation
+    fn send_animation<C>(&self, chat_id: C, animation: crate::media_types::InputFile) -> Self::SendAnimation
     where
         C: Into<Recipient>;
 
     type SendVoice: Request<Payload = SendVoice, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendVoice`].
-    fn send_voice<C>(&self, chat_id: C, voice: InputFile) -> Self::SendVoice
+    fn send_voice<C>(&self, chat_id: C, voice: crate::media_types::InputFile) -> Self::SendVoice
     where
         C: Into<Recipient>;
 
     type SendVideoNote: Request<Payload = SendVideoNote, Err = Self::Err>;
 
     /// For Telegram documentation see [`SendVideoNote`].
-    fn send_video_note<C>(&self, chat_id: C, video_note: InputFile) -> Self::SendVideoNote
+    fn send_video_note<C>(&self, chat_id: C, video_note: crate::media_types::InputFile) -> Self::SendVideoNote
     where
         C: Into<Recipient>;
 
@@ -275,7 +275,7 @@ pub trait Requester {
     fn send_media_group<C, M>(&self, chat_id: C, media: M) -> Self::SendMediaGroup
     where
         C: Into<Recipient>,
-        M: IntoIterator<Item = InputMedia>;
+        M: IntoIterator<Item = crate::media_types::InputMedia>;
 
     type SendLocation: Request<Payload = SendLocation, Err = Self::Err>;
 
@@ -551,7 +551,7 @@ pub trait Requester {
     type SetChatPhoto: Request<Payload = SetChatPhoto, Err = Self::Err>;
 
     /// For Telegram documentation see [`SetChatPhoto`].
-    fn set_chat_photo<C>(&self, chat_id: C, photo: InputFile) -> Self::SetChatPhoto
+    fn set_chat_photo<C>(&self, chat_id: C, photo: crate::media_types::InputFile) -> Self::SetChatPhoto
     where
         C: Into<Recipient>;
 
@@ -876,7 +876,7 @@ pub trait Requester {
         &self,
         chat_id: C,
         message_id: MessageId,
-        media: InputMedia,
+        media: crate::media_types::InputMedia,
     ) -> Self::EditMessageMedia
     where
         C: Into<Recipient>;
@@ -887,7 +887,7 @@ pub trait Requester {
     fn edit_message_media_inline<I>(
         &self,
         inline_message_id: I,
-        media: InputMedia,
+        media: crate::media_types::InputMedia,
     ) -> Self::EditMessageMediaInline
     where
         I: Into<String>;

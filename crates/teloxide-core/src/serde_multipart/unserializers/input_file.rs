@@ -9,7 +9,7 @@ use crate::{
     serde_multipart::unserializers::{
         bytes::BytesUnserializer, string::StringUnserializer, UnserializerError,
     },
-    types::InputFile,
+    media_types::InputFile,
 };
 
 pub(crate) enum InputFileUnserializer {

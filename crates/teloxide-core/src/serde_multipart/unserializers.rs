@@ -77,7 +77,7 @@ fn test() {
         serde_multipart::unserializers::{
             input_file::InputFileUnserializer, string::StringUnserializer,
         },
-        types::InputFile,
+        media_types::InputFile,
     };
 
     use serde::Serialize;

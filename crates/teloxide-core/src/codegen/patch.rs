@@ -41,7 +41,7 @@ static DOC_PATCHES: &[(Target, Patch)] = &[
         Target::Any { method_name: None },
         Patch::ReplaceLink {
             name: "More info on Sending Files »",
-            value: "crate::types::InputFile",
+            value: "crate::media_types::InputFile",
         },
     ),
     (

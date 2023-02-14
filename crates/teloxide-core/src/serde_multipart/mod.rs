@@ -86,12 +86,12 @@ mod tests {
 
     use super::to_form_ref;
     use crate::{
-        payloads::{self, setters::*},
-        types::{
-            ChatId, InputFile, InputMedia, InputMediaAnimation, InputMediaAudio,
-            InputMediaDocument, InputMediaPhoto, InputMediaVideo, InputSticker, MessageEntity,
-            MessageEntityKind, ParseMode, UserId,
+        media_types::{
+            InputFile, InputMedia, InputMediaAnimation, InputMediaAudio, InputMediaDocument,
+            InputMediaPhoto, InputMediaVideo, InputSticker,
         },
+        payloads::{self, setters::*},
+        types::{ChatId, MessageEntity, MessageEntityKind, ParseMode, UserId},
     };
 
     // https://github.com/teloxide/teloxide/issues/473

@@ -18,7 +18,7 @@ impl_payload! {
             pub chat_id: Recipient [into],
             /// Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub photo: InputFile,
         }
         optional {

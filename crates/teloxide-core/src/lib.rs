@@ -110,7 +110,8 @@ pub mod net;
 pub mod payloads;
 pub mod prelude;
 pub mod requests;
-pub mod types;
+pub mod media_types;
+pub use teloxide_types as types;
 
 // reexported
 mod bot;

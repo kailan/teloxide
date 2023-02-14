@@ -16,7 +16,7 @@ impl_payload! {
             pub name: String [into],
             /// **PNG** or **TGS** image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a _file\_id_ as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             #[serde(flatten)]
             pub sticker: InputSticker,
             /// One or more emoji corresponding to the sticker

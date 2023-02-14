@@ -18,7 +18,7 @@ impl_payload! {
         optional {
             /// A **PNG** image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a **TGS** animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a _file\_id_ as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. [More info on Sending Files »]. Animated sticker set thumbnail can't be uploaded via HTTP URL.
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub thumb: InputFile,
         }
     }

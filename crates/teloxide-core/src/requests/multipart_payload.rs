@@ -1,7 +1,7 @@
 use crate::{
     payloads,
     requests::Payload,
-    types::{InputFile, InputFileLike, InputMedia},
+    media_types::{InputFile, InputFileLike, InputMedia},
 };
 
 /// Payloads that need to be sent as `multipart/form-data` because they contain

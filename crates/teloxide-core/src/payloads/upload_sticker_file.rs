@@ -14,7 +14,7 @@ impl_payload! {
             pub user_id: UserId,
             /// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. [More info on Sending Files »]
             ///
-            /// [More info on Sending Files »]: crate::types::InputFile
+            /// [More info on Sending Files »]: crate::media_types::InputFile
             pub png_sticker: InputFile,
         }
     }
